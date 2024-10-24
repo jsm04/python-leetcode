@@ -12,43 +12,29 @@ Return the answer with the smaller index first.
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        prev_map = {}
+        prev_map: dict[int, int] = {}
         for i, n in enumerate(nums):
-            delta = target - n
-            if delta in prev_map:
-                return [prev_map[delta], i]
+            # delta -> difference or change between two states or values
+            # here delta is the complement necesary to get the target
+            complement = target - n
+            # if complement is stored in map return solution as index list
+            if complement in prev_map:
+                return [prev_map[complement], i]
+            # stores number and index key pair in map
             prev_map[n] = i
-
-
-class Solution2:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        prev_map = self._build_prev_map(nums)
-        return self._find_indices(nums, target, prev_map)
-
-    def _build_prev_map(self, nums: List[int]) -> dict:
-        prev_map = {}
-        for i, n in enumerate(nums):
-            prev_map[n] = i
-        return prev_map
-
-    def _find_indices(self, nums: List[int], target: int, prev_map: dict) -> List[int]:
-        for i, n in enumerate(nums):
-            delta = target - n
-            if delta in prev_map and prev_map[delta] != i:
-                return [prev_map[delta], i]
+        return []
 
 
 """
 Example 1:
 Input:
 nums = [3,4,5,6], target = 7
-
 Output: [0,1]
+
 Explanation: nums[0] + nums[1] == 7, so we return [0, 1].
 
 Example 2:
 Input: nums = [4,5,6], target = 10
-
 Output: [0,2]
 Example 3:
 

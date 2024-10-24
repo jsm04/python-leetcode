@@ -20,15 +20,8 @@ class Solution:
                 i += 1
             else:
                 nums.pop(i)
+        return
 
-
-s = Solution()
-
-example1 = [1, 1, 2]
-example2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-
-print(s.removeDuplicates(example1) == 2, "Should be true")
-print(s.removeDuplicates(example2) == 5, "Should be true")
 
 """
 Example 1:

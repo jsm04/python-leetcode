@@ -10,7 +10,7 @@ def generate_permutations(elements):
     else:
         for i in range(n):
             # Recursively generate permutations of n-1 elements
-            for perm in generate_permutations(elements[:i] + elements[i+1:]):
+            for perm in generate_permutations(elements[:i] + elements[i + 1 :]):
                 yield [elements[i]] + perm
 
             # If length of elements is odd, swap first and last element
@@ -19,6 +19,7 @@ def generate_permutations(elements):
             # If length is even, swap ith and last element
             else:
                 elements[i], elements[-1] = elements[-1], elements[i]
+
 
 # Example usage
 input_set = [1, 2, 3]

@@ -1,5 +1,3 @@
-from typing import List
-
 """
 Duplicate Integer
 Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
@@ -7,7 +5,7 @@ Given an integer array nums, return true if any value appears more than once in 
 
 
 class Solution:
-    def contains_duplicate(self, nums: List[int]) -> bool:
+    def contains_duplicate(self, nums: list[int]) -> bool:
         seen = set()
         for n in nums:
             if n in seen:
@@ -16,16 +14,17 @@ class Solution:
         return False
 
 
-"""
-Example 1:
+# Instantiate the Solution class
+solution = Solution()
 
-Input: nums = [1, 2, 3, 3]
+# Example 1
+nums1 = [1, 2, 3, 3]
+print(
+    f"Example 1 - Input: {nums1}, Output: {solution.contains_duplicate(nums1)}"
+)  # Expected Output: True
 
-Output: true
-Example 2:
-
-Input: nums = [1, 2, 3, 4]
-
-Output: false
-
-"""
+# Example 2
+nums2 = [1, 2, 3, 4]
+print(
+    f"Example 2 - Input: {nums2}, Output: {solution.contains_duplicate(nums2)}"
+)  # Expected Output: False

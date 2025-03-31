@@ -12,35 +12,35 @@ Return true if s is a valid string, and false otherwise.
 
 
 class Solution:
-    def isValid(self, string: str) -> bool:
-        characters_map = {")": "(", "]": "[", "}": "{"}
-        stack = []
-
+    def is_valid(self, string: str) -> bool:
+        brackets_map = {")": "(", "]": "[", "}": "{"}
+        stack: list[str] = []
         for char in string:
-            if char not in characters_map:
+            if char not in brackets_map:
                 stack.append(char)
                 continue
-            if not stack or stack[-1] != characters_map[char]:
+            if not stack or stack[-1] != brackets_map[char]:
                 return False
-            stack.pop()
-
+            _ = stack.pop()
         return not stack
 
 
-"""
-Example 1:
-Input: s = "[]"
-Output: true
+solution = Solution()
 
-Example 2:
-Input: s = "([{}])"
-Output: true
+# Example 1
+s1 = "[]"
+print(
+    f"Example 1 - Input: {s1}, Output: {solution.is_valid(s1)}"
+)  # Expected Output: True
 
-Example 3:
-Input: s = "[(])"
-Output: false
+# Example 2
+s2 = "([{}])"
+print(
+    f"Example 2 - Input: {s2}, Output: {solution.is_valid(s2)}"
+)  # Expected Output: True
 
-Explanation: The brackets are not closed in the correct order.
-Constraints:
-1 <= s.length <= 1000
-"""
+# Example 3
+s3 = "[(])"
+print(
+    f"Example 3 - Input: {s3}, Output: {solution.is_valid(s3)}"
+)  # Expected Output: False

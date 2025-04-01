@@ -15,25 +15,25 @@ nums is sorted in non-decreasing order.
 
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
-        unique_nums = set()
-        i = 0
-        while i < len(nums):
-            if nums[i] not in unique_nums:
-                unique_nums.add(nums[i])
-                i += 1
-            else:
-                nums.pop(i)
-        return
+        if not nums:
+            return 0
+        next_pointer = 0  # Tracks the last unique element
+
+        for i in range(1, len(nums)):
+            if nums[i] != nums[next_pointer]:  # Found a new unique value
+                next_pointer += 1
+                nums[next_pointer] = nums[i]  # Move it forward
+        return next_pointer + 1  # New length of unique elements
 
 
-solution = Solution()
+s = Solution()
 
 # Example 1
 nums1 = [1, 1, 2]
-result1 = solution.removeDuplicates(nums1)
+result1 = s.removeDuplicates(nums1)
 print(f"Example 1 - Input: {nums1}, Output: {result1}, nums = {nums1}")
 
 # Example 2
 nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-result2 = solution.removeDuplicates(nums2)
+result2 = s.removeDuplicates(nums2)
 print(f"Example 2 - Input: {nums2}, Output: {result2}, nums = {nums2}")
